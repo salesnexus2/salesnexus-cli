@@ -31,7 +31,7 @@ dependencies = [
 dev = ["pytest>=8", "respx>=0.21", "pytest-mock>=3"]
 
 [project.scripts]
-snx = "salesnexus_cli.main:app"
+snx = "salesnexus_cli.main:cli"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/salesnexus_cli"]

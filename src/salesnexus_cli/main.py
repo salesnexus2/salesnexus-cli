@@ -109,18 +109,15 @@ app.command(name="ping")(ping.ping)
 
 
 # ---------------------------------------------------------------------------
-# Global error handler
+# Global error handler — wraps the real Typer app in a plain function
 # ---------------------------------------------------------------------------
 
-_original_main = app.__call__
-
-
-def _safe_main(*a, **kw):  # type: ignore[no-untyped-def]
+def cli() -> None:
+    """Entry-point that catches ApiError and prints a clean message."""
     try:
-        return _original_main(*a, **kw)
+        app()
+    except SystemExit as exc:
+        raise exc
     except ApiError as exc:
         render_error(str(exc))
-        raise typer.Exit(1)
-
-
-app.__call__ = _safe_main  # type: ignore[method-assign]
+        raise SystemExit(1)

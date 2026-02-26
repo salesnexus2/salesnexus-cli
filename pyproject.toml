@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "salesnexus-cli"
+version = "0.1.0"
+description = "SalesNexus CLI — manage your CRM from the command line"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "SalesNexus", email = "support@salesnexus.com" }]
+keywords = ["salesnexus", "crm", "cli", "sales", "contacts"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale",
+    "Typing :: Typed",
+]
+dependencies = [
+    "typer[all]>=0.12,<1",
+    "httpx>=0.27,<1",
+    "rich>=13,<14",
+    "tomli>=2;python_version<'3.11'",
+    "tomli-w>=1,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "respx>=0.21", "pytest-mock>=3"]
+
+[project.scripts]
+snx = "salesnexus_cli.main:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/salesnexus_cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

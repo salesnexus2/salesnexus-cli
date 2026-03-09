@@ -189,6 +189,58 @@ Response: same shape as batch-update.
 
 ---
 
+### snx transcripts
+
+#### list
+```
+snx transcripts list [--page N] [--page-size N] [--contact-id N] [--user-id N] [--provider TEXT] [--status TEXT] [--from ISO8601] [--to ISO8601] [--search TEXT] [--all]
+```
+| Param | Default | Notes |
+|---|---|---|
+| `--page` | 1 | |
+| `--page-size` | 20 | max 100 |
+| `--contact-id` | — | filter by contact |
+| `--user-id` | — | filter by owner/agent |
+| `--provider` | — | e.g. `RingCentral`, `zoom_phone` |
+| `--status` | — | `processing`, `completed`, `failed` |
+| `--from` | — | ISO8601 lower bound |
+| `--to` | — | ISO8601 upper bound |
+| `--search`, `-s` | — | substring search in transcript text |
+| `--all`, `-a` | false | auto-paginates |
+
+Response:
+```json
+{
+  "data": [
+    {
+      "id": 987,
+      "userId": 12,
+      "contactId": 101,
+      "provider": "RingCentral",
+      "externalCallId": "abc123",
+      "recordingUrl": "https://...",
+      "transcriptText": "Hello...",
+      "language": "en",
+      "durationSeconds": 312.4,
+      "status": "completed",
+      "createdAt": "2026-02-25T16:47:25Z",
+      "updatedAt": "2026-02-25T16:50:10Z"
+    }
+  ],
+  "totalItems": 1,
+  "page": 1,
+  "pageSize": 20
+}
+```
+
+#### get
+```
+snx transcripts get ID
+```
+Response: single transcript object, including full `transcriptText`.
+
+---
+
 ### snx opps
 
 #### list

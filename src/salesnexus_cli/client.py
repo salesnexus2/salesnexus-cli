@@ -86,6 +86,14 @@ class SalesNexusClient:
     # Convenience verbs
     # ------------------------------------------------------------------
 
+    def get_response(self, path: str, *, params: Optional[dict] = None) -> httpx.Response:
+        """Return the raw GET response after retry/error handling.
+
+        Useful for endpoints that return pagination metadata in headers instead
+        of inside the JSON body.
+        """
+        return self.request("GET", path, params=params)
+
     def get(self, path: str, *, params: Optional[dict] = None) -> Any:
         return self.request("GET", path, params=params).json()
 

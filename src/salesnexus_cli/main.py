@@ -90,6 +90,7 @@ from salesnexus_cli.commands import ping  # noqa: E402
 from salesnexus_cli.commands import reports  # noqa: E402
 from salesnexus_cli.commands import tasks  # noqa: E402
 from salesnexus_cli.commands import templates  # noqa: E402
+from salesnexus_cli.commands import transcripts  # noqa: E402
 from salesnexus_cli.commands import users  # noqa: E402
 
 app.add_typer(auth.app, name="auth")
@@ -104,6 +105,7 @@ app.add_typer(reports.app, name="reports")
 app.add_typer(lookups.app, name="lookups")
 app.add_typer(documents.app, name="docs")
 app.add_typer(forms.app, name="forms")
+app.add_typer(transcripts.app, name="transcripts")
 app.add_typer(users.app, name="users")
 app.command(name="ping")(ping.ping)
 

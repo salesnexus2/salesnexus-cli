@@ -19,6 +19,7 @@ Designed for humans **and** AI agents — output auto-switches to JSON when pipe
   - [ping](#ping)
   - [auth](#auth)
   - [contacts](#contacts)
+  - [transcripts](#transcripts)
   - [opps (opportunities)](#opps-opportunities)
   - [tasks](#tasks)
   - [notes](#notes)
@@ -84,6 +85,9 @@ snx ping
 
 # 3. List your contacts
 snx contacts list
+
+# 3b. List recent call transcripts
+snx transcripts list --page-size 5
 
 # 4. Create a contact
 snx contacts create --first-name "Jane" --last-name "Doe" --email "jane@acme.com" --company "Acme Corp"
@@ -220,6 +224,43 @@ snx --csv contacts list --all > contacts.csv
 # One-off API key (e.g. in CI)
 snx --api-key sn_live_... ping
 ```
+
+---
+
+## Transcripts
+
+Read call transcripts created automatically by integrated calling providers.
+
+### List transcripts
+
+```bash
+snx transcripts list
+snx transcripts list --contact-id 123
+snx transcripts list --provider RingCentral --status completed
+snx transcripts list --search "pricing objection" --all --json
+```
+
+Supported filters:
+
+- `--page`
+- `--page-size`
+- `--contact-id`
+- `--user-id`
+- `--provider`
+- `--status`
+- `--from`
+- `--to`
+- `--search`
+- `--all`
+
+### Get one transcript
+
+```bash
+snx transcripts get 987
+snx --json transcripts get 987
+```
+
+List output includes summary columns such as transcript ID, contact ID, provider, status, duration, and creation date. `get` returns the full transcript payload including `transcriptText` and `recordingUrl` when available.
 
 ---
 

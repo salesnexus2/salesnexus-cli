@@ -3,7 +3,7 @@
 A command-line interface for the [SalesNexus](https://salesnexus.com) CRM.
 Designed for humans **and** AI agents — output auto-switches to JSON when piped.
 
-> **Version:** 0.1.0 &nbsp;|&nbsp; **API:** SalesNexus Public API v1 &nbsp;|&nbsp; **Python:** ≥ 3.10
+> **Version:** 0.1.1 &nbsp;|&nbsp; **API:** SalesNexus Public API v1 &nbsp;|&nbsp; **Python:** ≥ 3.10
 
 ---
 
@@ -64,7 +64,7 @@ pip install -e ".[dev]"
 
 ```bash
 snx --version
-# snx 0.1.0
+# snx 0.1.1
 ```
 
 > **Note:** If `snx` is not on your PATH after install, add the Python Scripts directory:
